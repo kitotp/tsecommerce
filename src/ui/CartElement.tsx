@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux';
 import type { RootState } from '../app/store';
 import CartItem from './CartItem';
+import { useNavigate } from 'react-router-dom';
 
 
 interface CartElementProps {
@@ -13,8 +14,13 @@ interface CartElementProps {
 const CartElement = ({ isOpen, onClose, children }: CartElementProps) => {
 
     const cart = useSelector((store: RootState) => store.cart.cart)
-
+    const navigator = useNavigate()
     const totalPrice = cart.reduce((accum, item) => accum + item.price * item.quantity, 0)
+
+    function handleRedirect() {
+        const randomId = crypto.randomUUID()
+        navigator(`/checkout/${randomId}`)
+    }
 
     return (
         <>
@@ -36,7 +42,7 @@ const CartElement = ({ isOpen, onClose, children }: CartElementProps) => {
                         </div>
 
                         <p>Total price: {totalPrice}</p>
-                        <button className='self-center border border-black p-2'>Checkout</button>
+                        <button className='self-center border border-black p-2' onClick={handleRedirect}>Checkout</button>
                     </>
                 }
             </div>
