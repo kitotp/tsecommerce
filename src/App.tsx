@@ -5,6 +5,7 @@ import ContactPage from "./features/contact/ContactPage";
 import AboutPage from "./features/about/AboutPage";
 import SignupPage from "./features/signup/SignupPage";
 import ProductPage from "./features/product/ProductPage";
+import CheckoutPage from "./features/checkout/CheckoutPage";
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     {
       path: '/product/:id',
       element: <ProductPage />,
+    },
+    {
+      path: '/checkout/:id',
+      element: <CheckoutPage />
     }
     ]
   }
