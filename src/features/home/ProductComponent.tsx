@@ -1,16 +1,18 @@
 import { useDispatch } from 'react-redux'
 import type { Product } from '../../api/queries/productsQuery'
 import { addToCart } from '../../app/slices/cartSlice'
+import { useNavigate } from 'react-router-dom'
 
 const ProductComponent = ({ item }: { item: Product }) => {
 
   const dispatch = useDispatch()
 
+  const navigator = useNavigate()
 
   return (
     <div className='h-[350px] w-[270px] flex flex-col justify-start'>
       <div className='flex items-center justify-center h-[250px] w-full bg-[#F5F5F5]'>
-        <img src={item.image}></img>
+        <img onClick={() => navigator(`/product/${item.id}`)} src={item.image}></img>
       </div>
       <p className='text-black mt-[8px] text-[16px] font-semibold'>{item.name.toUpperCase()}</p>
       <div>
