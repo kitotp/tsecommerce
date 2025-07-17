@@ -6,6 +6,8 @@ import AboutPage from "./features/about/AboutPage";
 import SignupPage from "./features/signup/SignupPage";
 import ProductPage from "./features/product/ProductPage";
 import CheckoutPage from "./features/checkout/CheckoutPage";
+import RequireNoAuth from "./ui/RequireNoAuth";
+import RequireAuth from "./ui/RequireAuth";
 
 
 const router = createBrowserRouter([
@@ -25,7 +27,11 @@ const router = createBrowserRouter([
     },
     {
       path: '/signup',
-      element: <SignupPage />
+      element: (
+        <RequireNoAuth>
+          <SignupPage />
+        </RequireNoAuth>
+      )
     },
     {
       path: '/product/:id',
@@ -33,7 +39,11 @@ const router = createBrowserRouter([
     },
     {
       path: '/checkout/:id',
-      element: <CheckoutPage />
+      element: (
+        <RequireAuth >
+          <CheckoutPage />
+        </RequireAuth>
+      )
     }
     ]
   }
