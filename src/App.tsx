@@ -4,6 +4,7 @@ import AppLayout from "./ui/AppLayout";
 import ContactPage from "./features/contact/ContactPage";
 import AboutPage from "./features/about/AboutPage";
 import SignupPage from "./features/signup/SignupPage";
+import ProductPage from "./features/product/ProductPage";
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
     {
       path: '/signup',
       element: <SignupPage />
+    },
+    {
+      path: '/product/:id',
+      element: <ProductPage />,
     }
     ]
   }
