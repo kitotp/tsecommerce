@@ -8,6 +8,8 @@ import ProductPage from "./features/product/ProductPage";
 import CheckoutPage from "./features/checkout/CheckoutPage";
 import RequireNoAuth from "./ui/RequireNoAuth";
 import RequireAuth from "./ui/RequireAuth";
+import CheckoutSuccessful from "./features/checkout/CheckoutSuccessful";
+import AdminPage from "./features/admin/AdminPage";
 
 
 const router = createBrowserRouter([
@@ -44,7 +46,16 @@ const router = createBrowserRouter([
           <CheckoutPage />
         </RequireAuth>
       )
-    }
+    },
+    {
+      // MAKE THIS PAGE DEPEND ON THE ORDER ID!!
+      path: '/order/successful',
+      element: <CheckoutSuccessful />
+    },
+    // {
+    //   path: '/admin',
+    //   element: <AdminPage />
+    // }
     ]
   }
 

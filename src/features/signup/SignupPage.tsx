@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import supabase from '../../supabaseClient'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../../app/slices/userSlice'
+import { handleLogin } from '../../api/user/fetchUser'
 
 const SignupPage = () => {
 
@@ -9,16 +10,10 @@ const SignupPage = () => {
     const [password, setPassword] = useState('')
     const dispatch = useDispatch()
 
-    async function handleLogin() {
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email,
-            password
-        })
+    async function login() {
+        const { user } = await handleLogin({ email, password })
+        dispatch(addUser({ id: user.id, email: user.email }))
 
-
-        if (error) throw error
-
-        dispatch(addUser(data.user.email))
     }
 
     return (
@@ -35,7 +30,7 @@ const SignupPage = () => {
                         <input placeholder='Your username...' value={password} onChange={(e) => setPassword(e.target.value)} className='border border-black'></input>
                     </div>
                 </div>
-                <button className='border border-black p-2' onClick={handleLogin}>Login</button>
+                <button className='border border-black p-2' onClick={login}>Login</button>
             </div>
         </div>
     )

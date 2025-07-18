@@ -26,6 +26,7 @@ const Header = () => {
                     <Link to='/about'>About</Link>
                     {!user && <Link to='/signup'>Sign up</Link>}
                     {user && <button onClick={() => dispatch(logoutUser())}>Logout</button>}
+                    {/* <Link to='/admin'>Admin</Link> */}
 
                 </div>
                 <div className='flex flex-row items-center justify-center gap-3'>
